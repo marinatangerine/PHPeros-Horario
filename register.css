@@ -171,3 +171,15 @@ p {
     font-family: "Raleway";
     color: black;
 }
+
+.validation-error {
+    border-color: red !important;
+}
+
+.register-success {
+    /*TODO*/
+}
+
+.register-error {
+    /*TODO*/
+}
