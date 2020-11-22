@@ -27,7 +27,7 @@
         <div class="session">
             <?php if(isset($_SESSION["role"])) {?>
                 <div>
-                    Bienvenido@ <?php echo $_SESSION["name"];?>!
+                    Bienvenid@ <?php echo $_SESSION["name"];?>!
                 </div>
                 <div>
                     <a class="icon" href="editUser.php">
