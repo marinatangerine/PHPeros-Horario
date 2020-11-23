@@ -18,7 +18,7 @@ function login() {
         $row = $result->fetch_assoc();
         if(password_verify($pass, $row["pass"])){
             //Guardo en la sesión en username del estudiante
-            updateSessionData($row["username"], $row["name"], $row["id"], $row["email"], roles[0], $row["nif"], $row["telephone"], $row["surname"]);
+            updateSessionData($row["username"], $row["name"], $row["id"], $row["email"], ROLES[0], $row["nif"], $row["telephone"], $row["surname"]);
             //Redirecciono a su home
             redirectHome();
         }else{
@@ -33,7 +33,7 @@ function login() {
             $row = $result->fetch_assoc();
             if (password_verify($pass, $row["password"])) {
                 //Guardo en la sesión el username del administrador
-                updateSessionData($row["username"], $row["name"], $row["id_user_admin"], $row["email"], roles[1], "", "", "");
+                updateSessionData($row["username"], $row["name"], $row["id_user_admin"], $row["email"], ROLES[1], "", "", "");
                 //Redirecciono a su home
                 redirectHome();
             }

@@ -13,7 +13,7 @@
     $surname = $_SESSION["surname"];
     $telephone = $_SESSION["telephone"];
     $nif = $_SESSION["nif"];
-    $isAdmin = $_SESSION["role"] == roles[1];
+    $isAdmin = $_SESSION["role"] == ROLES[1];
 
     function loadData() {
         global $connection;
@@ -71,7 +71,7 @@
         }
 
         //validación de email
-        $sql = "SELECT sum(cuenta) as cuenta from ((select count(*) as cuenta FROM users_admin where email = '$email') union (select count(*) from students where email = '$email')) as a";
+        $sql = "SELECT sum(cuenta) as cuenta from ((select count(*) as cuenta FROM users_admin where email = '$email') union (select count(*)as cuenta from students where email = '$email') union (select count(*) as cuenta from teachers where email = '$email')) as a";
         $result = $connection->query($sql);
         $row = $result->fetch_assoc();
         $count = $row["cuenta"];
@@ -81,7 +81,7 @@
         }
         
         //validación de username
-        $sql = "SELECT sum(cuenta) as cuenta from ((select count(*) as cuenta FROM users_admin where username = '$userName') union (select count(*) from students where username = '$userName')) as a";
+        $sql = "SELECT sum(cuenta) as cuenta from ((select count(*) as cuenta FROM users_admin where username = '$userName') union (select count(*) as cuenta from students where username = '$userName')) as a";
         $result = $connection->query($sql);
         $row = $result->fetch_assoc();
         $count = $row["cuenta"];
@@ -90,9 +90,9 @@
             $validationErrors++;
         }
 
-        //validación de nif de alumnos
+        //validación de nif
         if(!$isAdmin){
-            $sql = "SELECT count(*) as cuenta FROM students WHERE nif='$nif'";
+            $sql = "SELECT sum(cuenta) as cuenta from ((select count(*) as cuenta from students where nif = '$nif') union (select count(*) as cuenta from teachers where nif = '$nif')) as a";
             $result = $connection->query($sql);
             $row = $result->fetch_assoc();
             $count = $row["cuenta"];

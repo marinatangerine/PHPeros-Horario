@@ -263,3 +263,19 @@
     a.icon {
         text-decoration: none;
     }
+    
+    #menu {
+        padding: 0;
+    }
+    
+    #menu li {
+        display: inline;
+    }
+    
+    #menu li a {
+        font-family: 'Raleway';
+        font-size: 14px;
+        text-decoration: none;
+        float: left;
+        color: #fff;
+    }

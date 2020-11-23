@@ -22,8 +22,12 @@
         <div class="title">
             <a href="index.php"><strong>PHP</strong>eros</a>
         </div>
-        <div class="menu">
-        </div>
+        <ul id="menu">
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Profesores</a></li>
+            <li><a href="#">Asignaturas</a></li>
+            <li><a href="#">Cursos</a></li>
+        </ul>
         <div class="session">
             <?php if(isset($_SESSION["role"])) {?>
                 <div>

@@ -10,15 +10,21 @@ if (!$connection) {
     echo "Error de depuración: " . mysqli_connect_errno() . PHP_EOL;
 }
 
-define("roles", ["student", "admin"]); //roles 0, 1 y 2
+define("ROLES", ["student", "admin"]); //roles 0, 1 y 2
+define("NEWITEM", "new"); //para identificar creación de nuevos elementos
+
+define("CLASSITEM", "class"); //identificador de clases
+define("TEACHERITEM", "teacher");  //identificador de procesores
+define("COURSEITEM", "course");  //identificador de alumnos
+
 
 function redirectHome(){
     switch($_SESSION["role"]) {
-        case roles[0]: 
+        case ROLES[0]: 
             header("Location: student.php");
             exit();
             break;
-        case roles[1]:
+        case ROLES[1]:
             header("Location: admin.php");
             exit();
             break;

@@ -18,7 +18,7 @@
     <div class="subtitle-register">
         <p>Está siendo redireccionado a la página de login. Si no es redirigido automáticamente pulse <a href="index.php">aquí</a></p>
     </div>
-    <!-- <script language="javascript">setTimeout(function(){window.location.href="index.php";}, 5000);</script> -->
+    <script language="javascript">setTimeout(function(){window.location.href="index.php";}, 5000);</script>
     <div class="container-register">
         
     </div>
