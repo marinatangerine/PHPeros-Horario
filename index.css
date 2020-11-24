@@ -25,8 +25,11 @@
         flex-wrap: wrap;
         justify-content: space-between;
         padding: 50px 143px 50px 80px;
-        margin-top: 5%;
         margin-bottom: 15%;
+    }
+    
+    .wrap-login {
+        margin-top: 5%;
     }
     
     .title-register {
@@ -197,6 +200,7 @@
         margin: 0;
         padding: 0;
         background: #4e4e4e;
+        font-family: "Raleway";
     }
     
     a,
@@ -278,4 +282,43 @@
         text-decoration: none;
         float: left;
         color: #fff;
+    }
+    
+    table.data-table {
+        width: 100%;
+        border-spacing: 0;
+    }
+    
+    table.data-table tr {
+        line-height: 50px;
+        font-size: 16px;
+    }
+    
+    table.data-table tr:nth-child(even) {
+        background-color: #f3f3f3;
+    }
+    
+    table.data-table th {
+        background-color: #c2c2c2;
+        color: #000000;
+        font-weight: normal;
+    }
+    
+    table.data-table th,
+    table.data-table td {
+        text-align: left;
+        padding: 5px;
+    }
+    
+    table.data-table td:last-child {
+        text-align: center;
+        font-size: 25px;
+    }
+    
+    table.data-table th:last-child {
+        text-align: center;
+    }
+    
+    table.data-table td:last-child a {
+        padding: 5px;
     }

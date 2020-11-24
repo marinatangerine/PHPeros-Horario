@@ -17,25 +17,23 @@
 
     $itemName = "";
     $errorText = "";
+    $returnUrl = "listItems.php?itemType=$itemType";
 
     switch ($itemType) {
         case TEACHERITEM:
             $itemTypeError = "El profesor no se puede eliminar. Tiene datos asociados";
             $itemTypeSuccess = "Profesor eliminado correctamente";
             $itemTypeText = "¿Seguro que desea eliminar el profesor?";
-            $returnUrl = "teachers.php";
             break;
         case CLASSITEM:
             $itemTypeError = "La clase no se puede eliminar. Tiene datos asociados";
             $itemTypeSuccess = "Clase eliminada correctamente";
             $itemTypeText = "¿Seguro que desea eliminar la clase?";
-            $returnUrl = "classes.php";
             break;
         case COURSEITEM:
             $itemTypeError = "El curso no se puede eliminar. Tiene datos asociados";
             $itemTypeSuccess = "Curso eliminado correctamente";
             $itemTypeText = "¿Seguro que desea eliminar el cruso?";
-            $returnUrl = "courses.php";
             break;
     }
     
