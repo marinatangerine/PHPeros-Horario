@@ -157,8 +157,6 @@
         } else {
             echo "No hay datos para mostrar";
         }
-
-        mysqli_close($connection);
     }
 ?>
 <div class="limiter">

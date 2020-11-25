@@ -51,8 +51,6 @@
             $dateend = $row["date_end"];
             $active = $row["active"];
         }
-
-        mysqli_close($connection);
     }
 
     function saveChanges() {        
@@ -82,8 +80,6 @@
                 $sql="UPDATE courses SET name = '$name', description = '$description', date_start = '$datestart', date_end = '$dateend', active = '$active' WHERE id_course = '$courseId'";
             }
             $go=mysqli_query($connection, $sql);
-    
-            mysqli_close($connection);
         }
     }
 

@@ -59,7 +59,6 @@
 
             //ejecutar sentencia sql
             $go=mysqli_query($connection, $sql);
-            mysqli_close($connection);
         }
     }
 

@@ -150,8 +150,6 @@
             $sql="UPDATE class SET id_teacher = '$teacherid', id_course = '$courseid', name = '$name', color = '$color' WHERE id_class = '$classId'";
         }
         $go=mysqli_query($connection, $sql);
-
-        mysqli_close($connection);
     }
 
     if(isset($_POST['submit'])) {

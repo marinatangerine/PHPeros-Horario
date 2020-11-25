@@ -41,8 +41,6 @@ function login() {
             $errorLogin = true;
         }
     }
-
-    mysqli_close($connection);
 }
 
 if(isset($_POST['submit'])) {

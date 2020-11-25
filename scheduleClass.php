@@ -184,5 +184,4 @@
 </div>
 <?php
     require("footer.php");
-    mysqli_close($connection);
 ?>

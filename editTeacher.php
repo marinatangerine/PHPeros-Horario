@@ -53,8 +53,6 @@
             $telephone = $row["telephone"];
             $nif = $row["nif"];
         }
-
-        mysqli_close($connection);
     }
 
     function saveChanges() {        
@@ -101,8 +99,6 @@
                 $sql="UPDATE teachers SET name = '$name', email = '$email', surname = '$surname', nif = '$nif', telephone = '$telephone' WHERE id_teacher = '$teacherId'";
             }
             $go=mysqli_query($connection, $sql);
-
-            mysqli_close($connection);
         }
     }
 

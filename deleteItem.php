@@ -17,7 +17,10 @@
 
     $itemName = "";
     $errorText = "";
-    $returnUrl = "listItems.php?itemType=$itemType";
+
+    if($itemType != SCHEDULEITEM){
+        $returnUrl = "listItems.php?itemType=$itemType";
+    }
 
     switch ($itemType) {
         case TEACHERITEM:
@@ -35,8 +38,14 @@
         case COURSEITEM:
             $itemTypeError = "El curso no se puede eliminar. Tiene datos asociados";
             $itemTypeSuccess = "Curso eliminado correctamente";
-            $itemTypeText = "¿Seguro que desea eliminar el cruso?";
+            $itemTypeText = "¿Seguro que desea eliminar el curso?";
             $itemTypeConfirm = "Eliminar curso";
+            break;
+        case SCHEDULEITEM:
+            $itemTypeError = "";
+            $itemTypeSuccess = "Programación eliminada correctamente";
+            $itemTypeText = "¿Seguro que desea eliminar la programación?";
+            $itemTypeConfirm = "Eliminar programación";
             break;
     }
     
@@ -46,6 +55,7 @@
         global $itemType;
         global $itemId;
         global $itemName;
+        global $returnUrl;
         
         switch ($itemType) {
             case TEACHERITEM:
@@ -57,6 +67,9 @@
             case COURSEITEM:
                 $sql = "SELECT CONCAT(name, '. ', description) as itemdesc FROM courses WHERE id_course = $itemId";
                 break;
+            case SCHEDULEITEM:
+                $sql = "select concat(c.name, ' (', s.day, ')') as itemdesc, s.id_class from schedule s inner join class c on s.id_class = c.id_class where s.id_schedule = $itemId";
+                break;
             default:
                 redirectHome();
                 break;
@@ -66,9 +79,11 @@
         if($result) {
             $row = $result->fetch_assoc();
             $itemName = $row["itemdesc"];
+            if($itemType == SCHEDULEITEM) {
+                $classId = $row["id_class"];
+                $returnUrl = "scheduleClass.php?classId=$classId";
+            }
         }
-
-        mysqli_close($connection);
     }
 
     function deleteItem() {        
@@ -89,6 +104,9 @@
             case COURSEITEM:
                 $sql = "DELETE FROM courses WHERE id_course = $itemId";
                 break;
+            case SCHEDULEITEM:
+                $sql = "DELETE FROM schedule WHERE id_schedule = $itemId";
+                break;
             default:
                 redirectHome();
                 break;
@@ -99,14 +117,11 @@
         } catch (\Throwable $th) {
             $errorText = $itemTypeError;
         }
-
-        mysqli_close($connection);
     }
 
+    loadData();
     if(isset($_POST['submit'])) {
         deleteItem();
-    } else {
-        loadData();
     }
 ?>
 <div class="limiter">

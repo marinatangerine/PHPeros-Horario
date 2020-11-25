@@ -128,8 +128,6 @@
                 updateSessionData($userName, $name, $userId, $email, $_SESSION["role"], "", "", "");
             else
                 updateSessionData($userName, $name, $userId, $email, $_SESSION["role"], $nif, $telephone, $surname);
-
-            mysqli_close($connection);
         }
     }
 
