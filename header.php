@@ -25,6 +25,7 @@
         <div class="title">
             <a href="index.php"><strong>PHP</strong>eros</a>
         </div>
+        <?php if(!strpos($_SERVER['REQUEST_URI'], "endSession.php") !== false) {?>
         <ul id="menu">
             <?php if(isset($_SESSION["userName"])) {?>
             <li><a href="calendar.php">Calendario</a></li>
@@ -52,4 +53,5 @@
                 </div>
             <?php }?>
         </div>
+        <?php }?>
     </div>

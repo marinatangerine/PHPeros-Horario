@@ -8,6 +8,10 @@
         redirectHome();
     }
 
+    if(!$isAdmin){
+        $studentId = $_SESSION["userId"];
+    }
+
     switch ($itemType) {
         case TEACHERITEM:
             $listName = "Profesores";
@@ -130,6 +134,7 @@
         global $connection;
         global $itemType;
         global $isAdmin;
+        global $studentId;
         
         switch ($itemType) {
             case TEACHERITEM:
@@ -142,7 +147,7 @@
                 if($isAdmin) {
                     $sql = "SELECT id_course, name, description, date_start, date_end, active from courses";
                 } else {
-                    $sql = "SELECT c.id_course, c.name, c.description, c.date_start, c.date_end, e.status from courses c left outer join enrollment e on c.id_course = e.id_course where c.active = 1";
+                    $sql = "SELECT c.id_course, c.name, c.description, c.date_start, c.date_end, (select e.status from enrollment e where e.id_student = $studentId and e.id_course = c.id_course) as status from courses c";
                 }
                 break;
         }
