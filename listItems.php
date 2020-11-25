@@ -63,6 +63,11 @@
         echo "<a class=\"icon\" href=\"deleteItem.php?itemType=".$itemType."&itemId=".$itemId."\"><i class=\"fa fa-trash\" aria-hidden=\"true\"></i></a>";
     }
 
+    function addScheduleAction($itemId) {
+        global $itemType;
+        echo "<a class=\"icon\" href=\"scheduleClass.php?classId=".$itemId."\"><i class=\"fa fa-calendar\" aria-hidden=\"true\"></i></a>";
+    }
+
     function drawLine($row) {
         global $itemType;
         echo "<tr>";
@@ -77,6 +82,9 @@
                 echo "<td>".$row["id_class"]."</td><td>".$row["name"]."</td><td>".$row["color"]."</td><td>".$row["teacherName"]."</td><td>".$row["courseName"]."</td><td>";
                 addEditAction($row["id_class"]);
                 addDeleteAction($row["id_class"]);
+                if($row["courseActive"] == 1) {
+                    addScheduleAction($row["id_class"]);
+                }
                 echo "</td>";
                 break;
             case COURSEITEM:
@@ -98,7 +106,7 @@
                 $sql = "SELECT id_teacher, name, surname, telephone, nif, email FROM teachers";
                 break;
             case CLASSITEM:
-                $sql = "select c.id_class, c.name, c.color, CONCAT(t.name, ' ', t.surname) as teacherName, co.name as courseName FROM class c INNER JOIN teachers t ON c.id_teacher = t.id_teacher INNER JOIN courses co on c.id_course = co.id_course";
+                $sql = "select c.id_class, c.name, c.color, CONCAT(t.name, ' ', t.surname) as teacherName, co.name as courseName, co.active as courseActive FROM class c INNER JOIN teachers t ON c.id_teacher = t.id_teacher INNER JOIN courses co on c.id_course = co.id_course";
                 break;
             case COURSEITEM:
                 $sql = "SELECT id_course, name, description, date_start, date_end, active from courses";
