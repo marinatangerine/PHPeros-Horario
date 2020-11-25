@@ -16,6 +16,7 @@ define("NEWITEM", "new"); //para identificar creación de nuevos elementos
 define("CLASSITEM", "class"); //identificador de clases
 define("TEACHERITEM", "teacher");  //identificador de procesores
 define("COURSEITEM", "course");  //identificador de alumnos
+define("SCHEDULEITEM", "schedule");  //identificador de horario
 
 
 function redirectHome(){

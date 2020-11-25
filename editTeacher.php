@@ -23,6 +23,15 @@
     $telephone = "";
     $nif = "";
 
+    //$title = 
+    if($teacherId != NEWITEM) {
+        $title = "Editar profesor";
+    } else {
+        $title = "Crear profesor";
+    }
+
+    $returnUrl = "listItems.php?itemType=".TEACHERITEM."&itemId=$teacherId";
+
     function loadData() {
         global $connection;
         global $teacherId;
@@ -104,90 +113,99 @@
     }
 ?>
 <div class="limiter">
+    <div class="title-register">
+        <h1><?php echo $title;?></h1>
+    </div>
     <div class="container-register">
         <div class="wrap-register">
-            <div class="hello-pic">
-                <img src="images/hello.png" alt="Hola">
+            <div class="half-wrapper">
+                <div class="big-icon"><i class="fa fa-user" aria-hidden="true"></i></div>
             </div>
-            <?php if(!isset($_POST['submit']) || $validationErrors > 0) {?>
-            <form action="editTeacher.php" method="POST">
-                <span class="register-form-title"><p><?php if (isset($_POST['name'])) echo $_POST['name'] . " " . $_POST['surname'] ; else echo $name . " " . $surname;?></p> </span>
-                <div class="wrap-input validate-input">
-                    <input class="input-register" type="text" name="name" placeholder="Nombre" 
-                    value="<?php if (isset($_POST['name'])) echo $_POST['name']; else echo $name;?>" required>
-                    <span class="focus-input"></span>
-                    <span class="icon-input">
-                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                </span>
-                </div>
+            <div class="half-wrapper">
+                <div class="form-body">
+                    <?php if(!isset($_POST['submit']) || $validationErrors > 0) {?>
+                    <form action="editTeacher.php" method="POST">
+                        <span class="register-form-title"><p><?php if (isset($_POST['name'])) echo $_POST['name'] . " " . $_POST['surname'] ; else echo $name . " " . $surname;?></p> </span>
+                        <div class="wrap-input validate-input">
+                            <input class="input-register" type="text" name="name" placeholder="Nombre" 
+                            value="<?php if (isset($_POST['name'])) echo $_POST['name']; else echo $name;?>" required>
+                            <span class="focus-input"></span>
+                            <span class="icon-input">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </span>
+                        </div>
 
-                <div class="wrap-input validate-input">
-                    <input class="input-register" type="text" name="surname" placeholder="Apellidos" 
-                    value="<?php if (isset($_POST['surname'])) echo $_POST['surname']; else echo $surname;?>" required>
-                    <span class="focus-input"></span>
-                    <span class="icon-input">
-                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                </span>
-                </div>
+                        <div class="wrap-input validate-input">
+                            <input class="input-register" type="text" name="surname" placeholder="Apellidos" 
+                            value="<?php if (isset($_POST['surname'])) echo $_POST['surname']; else echo $surname;?>" required>
+                            <span class="focus-input"></span>
+                            <span class="icon-input">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </span>
+                        </div>
 
-                <div class="wrap-input validate-input">
-                    <input 
-                        class="input-register <?php if($errorNIF != "") echo "validation-error"; ?>"
-                        title="<?php if($errorNIF != "") echo $errorNIF; ?>"
-                        value="<?php if(isset($_POST['nif'])) echo $_POST['nif']; else echo $nif;?>" 
-                        type="text" 
-                        name="nif" 
-                        placeholder="DNI" 
-                        required>
-                    <span class="focus-input"></span>
-                    <span class="icon-input">
-                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                </span>
-                </div>
-                <input name="originalNif" value="<?php if(isset($_POST['originalNif'])) echo $_POST['originalNif']; else echo $nif;?>" style="display: none;">
+                        <div class="wrap-input validate-input">
+                            <input 
+                                class="input-register <?php if($errorNIF != "") echo "validation-error"; ?>"
+                                title="<?php if($errorNIF != "") echo $errorNIF; ?>"
+                                value="<?php if(isset($_POST['nif'])) echo $_POST['nif']; else echo $nif;?>" 
+                                type="text" 
+                                name="nif" 
+                                placeholder="DNI" 
+                                required>
+                            <span class="focus-input"></span>
+                            <span class="icon-input">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </span>
+                        </div>
+                        <input name="originalNif" value="<?php if(isset($_POST['originalNif'])) echo $_POST['originalNif']; else echo $nif;?>" style="display: none;">
 
-                <div class="wrap-input validate-input">
-                    <input 
-                        class="input-register <?php if($errorEmail != "") echo "validation-error"; ?>"
-                        title="<?php if($errorEmail != "") echo $errorEmail; ?>"
-                        value="<?php if(isset($_POST['email'])) echo $_POST['email']; else echo $email;?>" 
-                        type="email" 
-                        name="email" 
-                        placeholder="Email" 
-                        required>
-                    <span class="focus-input"></span>
-                    <span class="icon-input">
-                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                </span>
-                </div>
-                <input name="originalEmail" value="<?php if(isset($_POST['originalEmail'])) echo $_POST['originalEmail']; else echo $email; ?>" style="display: none;">
+                        <div class="wrap-input validate-input">
+                            <input 
+                                class="input-register <?php if($errorEmail != "") echo "validation-error"; ?>"
+                                title="<?php if($errorEmail != "") echo $errorEmail; ?>"
+                                value="<?php if(isset($_POST['email'])) echo $_POST['email']; else echo $email;?>" 
+                                type="email" 
+                                name="email" 
+                                placeholder="Email" 
+                                required>
+                            <span class="focus-input"></span>
+                            <span class="icon-input">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </span>
+                        </div>
+                        <input name="originalEmail" value="<?php if(isset($_POST['originalEmail'])) echo $_POST['originalEmail']; else echo $email; ?>" style="display: none;">
 
-                <div class="wrap-input validate-input">
-                    <input class="input-register" type="tel" name="telephone" placeholder="Teléfono" 
-                    value="<?php if (isset($_POST['telephone'])) echo $_POST['telephone']; else echo $telephone?>" required>
-                    <span class="focus-input"></span>
-                    <span class="icon-input">
-                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                </span>
+                        <div class="wrap-input validate-input">
+                            <input class="input-register" type="tel" name="telephone" placeholder="Teléfono" 
+                            value="<?php if (isset($_POST['telephone'])) echo $_POST['telephone']; else echo $telephone?>" required>
+                            <span class="focus-input"></span>
+                            <span class="icon-input">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </span>
 
-                <input name="teacherId" value="<?php echo $teacherId; ?>" style="display: none;">
+                        <input name="teacherId" value="<?php echo $teacherId; ?>" style="display: none;">
 
+                        </div>
+                        <br>
+                        <?php if($validationErrors > 0) {?>
+                            <div class="register-error">
+                                <p>Revise los campos marcados e inténtelo de nuevo</p>
+                            </div>
+                        <?php }?>
+                        <div class="btn-register">
+                            <input type="submit" class="register-form-btn" name="submit" value="Guardar"></input>
+                        </div>
+                        <p><a href="<?php echo $returnUrl?>">Cancelar</a></p>
+                    </form>
+                    <?php } else {?>
+                        <div class="register-success">
+                            <p>Cambios guardados correctamente</p>
+                        </div>
+                        <p><a href="<?php echo $returnUrl?>">Volver</a></p>
+                    <?php }?>
                 </div>
-                <br>
-                <?php if($validationErrors > 0) {?>
-                    <div class="register-error">
-                        <p>Revise los campos marcados e inténtelo de nuevo</p>
-                    </div>
-                <?php }?>
-                <div class="btn-register">
-                    <input type="submit" class="register-form-btn" name="submit" value="Guardar"></input>
-                </div>
-            </form>
-            <?php } else {?>
-                <div class="register-success">
-                    <p>Cambios guardados correctamente</p>
-                </div>
-            <?php }?>
+            </div>
         </div>
     </div>
 </div>

@@ -24,16 +24,19 @@
             $itemTypeError = "El profesor no se puede eliminar. Tiene datos asociados";
             $itemTypeSuccess = "Profesor eliminado correctamente";
             $itemTypeText = "¿Seguro que desea eliminar el profesor?";
+            $itemTypeConfirm = "Eliminar profesor";
             break;
         case CLASSITEM:
             $itemTypeError = "La clase no se puede eliminar. Tiene datos asociados";
             $itemTypeSuccess = "Clase eliminada correctamente";
             $itemTypeText = "¿Seguro que desea eliminar la clase?";
+            $itemTypeConfirm = "Eliminar clase";
             break;
         case COURSEITEM:
             $itemTypeError = "El curso no se puede eliminar. Tiene datos asociados";
             $itemTypeSuccess = "Curso eliminado correctamente";
             $itemTypeText = "¿Seguro que desea eliminar el cruso?";
+            $itemTypeConfirm = "Eliminar curso";
             break;
     }
     
@@ -107,33 +110,40 @@
     }
 ?>
 <div class="limiter">
+    <div class="title-register">
+        <h1><?php echo $itemTypeConfirm;?></h1>
+    </div>
     <div class="container-register">
         <div class="wrap-register">
-            <div class="hello-pic">
-                <img src="images/hello.png" alt="Hola">
+            <div class="half-wrapper">
+                <div class="big-icon"><i class="fa fa-trash" aria-hidden="true"></i></div>
             </div>
-            <?php if(!isset($_POST['submit'])) {?>
-            <form action="deleteItem.php" method="POST">
-                <p><?php echo $itemTypeText;?></p>
-                <span class="register-form-title"><p><?php echo $itemName;?></p></span>
-                <input name="itemType" value="<?php echo $itemType; ?>" style="display: none;">
-                <input name="itemId" value="<?php echo $itemId; ?>" style="display: none;">
-                <div class="btn-register">
-                    <input type="submit" class="register-form-btn" name="submit" value="Aceptar"></input>
+            <div class="half-wrapper">
+                <div class="form-body">
+                    <?php if(!isset($_POST['submit'])) {?>
+                    <form action="deleteItem.php" method="POST">
+                        <p><?php echo $itemTypeText;?></p>
+                        <span class="register-form-title"><p><?php echo $itemName;?></p></span>
+                        <input name="itemType" value="<?php echo $itemType; ?>" style="display: none;">
+                        <input name="itemId" value="<?php echo $itemId; ?>" style="display: none;">
+                        <div class="btn-register">
+                            <input type="submit" class="register-form-btn" name="submit" value="Aceptar"></input>
+                        </div>
+                        <p><a href="<?php echo $returnUrl?>">Cancelar</a></p>
+                    </form>
+                    <?php } else if ($errorText != "") {?>
+                        <div class="register-success">
+                            <p><?php echo $errorText;?></p>
+                            <p><a href="<?php echo $returnUrl?>">Volver</a></p>
+                        </div>
+                    <?php } else {?>
+                        <div class="register-success">
+                            <p><?php echo $itemTypeSuccess;?></p>
+                            <p><a href="<?php echo $returnUrl?>">Volver</a></p>
+                        </div>
+                    <?php }?>
                 </div>
-                <p><a href="<?php echo $returnUrl?>">Cancelar</a></p>
-            </form>
-            <?php } else if ($errorText != "") {?>
-                <div class="register-success">
-                    <p><?php echo $errorText;?></p>
-                    <p><a href="<?php echo $returnUrl?>">Volver</a></p>
-                </div>
-            <?php } else {?>
-                <div class="register-success">
-                    <p><?php echo $itemTypeSuccess;?></p>
-                    <p><a href="<?php echo $returnUrl?>">Volver</a></p>
-                </div>
-            <?php }?>
+            </div>
         </div>
     </div>
 </div>

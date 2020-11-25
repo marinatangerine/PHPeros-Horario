@@ -73,120 +73,120 @@
 <div class="title-register">
     <h1> Conviértete en PHPero<br/></h1>
 </div>
-<div class="subtitle-register">
-    <h2>Aprovecha las ventajas de formar parte de esta gran comunidad de aprendizaje</h2>
-</div> 
 <div class="container-register">
-        <div class="wrap-register">
-            <div class="hello-pic">
-                <img src="images/hello.png" alt="Hola">
-            </div>
-            <?php if(!isset($_POST['submit']) || $validationErrors > 0) {?>
-            <form action="register.php" method="POST">
+    <div class="wrap-register">
+        <div class="half-wrapper">
+            <div class="big-icon"><i class="fa fa-bug" aria-hidden="true"></i></div>
+        </div>
+        <div class="half-wrapper">
+            <div class="form-body">
+                <?php if(!isset($_POST['submit']) || $validationErrors > 0) {?>
+                <form action="register.php" method="POST">
 
-                <span class="register-form-title"><p>Registro de alumnos</p> </span>
+                    <span class="register-form-title"><p>Registro de alumnos</p> </span>
 
-                <div class="wrap-input validate-input">
-                    <input 
-                        class="input-register <?php if($errorUsername != "") echo "validation-error"; ?>"
-                        title="<?php if($errorUsername != "") echo $errorUsername; ?>"
-                        value="<?php if(isset($_POST['username'])) echo $_POST['username']; ?>" 
-                        type="text" 
-                        name="username" 
-                        placeholder="Nombre de usuario" 
-                        required>
-                    <span class="focus-input"></span>
-                    <span class="icon-input">
-                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                </span>
-                </div>
+                    <div class="wrap-input validate-input">
+                        <input 
+                            class="input-register <?php if($errorUsername != "") echo "validation-error"; ?>"
+                            title="<?php if($errorUsername != "") echo $errorUsername; ?>"
+                            value="<?php if(isset($_POST['username'])) echo $_POST['username']; ?>" 
+                            type="text" 
+                            name="username" 
+                            placeholder="Nombre de usuario" 
+                            required>
+                        <span class="focus-input"></span>
+                        <span class="icon-input">
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                    </span>
+                    </div>
 
-                <div class="wrap-input validate-input">
-                    <input class="input-register" type="text" name="name" placeholder="Nombre" value="<?php if (isset($_POST['name'])) {
-                echo $_POST['name'];
-            } ?>" required>
-                    <span class="focus-input"></span>
-                    <span class="icon-input">
-                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                </span>
-                </div>
+                    <div class="wrap-input validate-input">
+                        <input class="input-register" type="text" name="name" placeholder="Nombre" value="<?php if (isset($_POST['name'])) {
+                    echo $_POST['name'];
+                } ?>" required>
+                        <span class="focus-input"></span>
+                        <span class="icon-input">
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                    </span>
+                    </div>
 
-                <div class="wrap-input validate-input">
-                    <input class="input-register" type="text" name="surname" placeholder="Apellidos" value="<?php if (isset($_POST['surname'])) {
-                echo $_POST['surname'];
-            } ?>" required>
-                    <span class="focus-input"></span>
-                    <span class="icon-input">
-                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                </span>
-                </div>
+                    <div class="wrap-input validate-input">
+                        <input class="input-register" type="text" name="surname" placeholder="Apellidos" value="<?php if (isset($_POST['surname'])) {
+                    echo $_POST['surname'];
+                } ?>" required>
+                        <span class="focus-input"></span>
+                        <span class="icon-input">
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                    </span>
+                    </div>
 
-                <div class="wrap-input validate-input">
-                    <input 
-                        class="input-register <?php if($errorNIF != "") echo "validation-error"; ?>"
-                        title="<?php if($errorNIF != "") echo $errorNIF; ?>"
-                        value="<?php if(isset($_POST['nif'])) echo $_POST['nif']; ?>" 
-                        type="text" 
-                        name="nif" 
-                        placeholder="DNI" 
-                        required>
-                    <span class="focus-input"></span>
-                    <span class="icon-input">
-                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                </span>
-                </div>
+                    <div class="wrap-input validate-input">
+                        <input 
+                            class="input-register <?php if($errorNIF != "") echo "validation-error"; ?>"
+                            title="<?php if($errorNIF != "") echo $errorNIF; ?>"
+                            value="<?php if(isset($_POST['nif'])) echo $_POST['nif']; ?>" 
+                            type="text" 
+                            name="nif" 
+                            placeholder="DNI" 
+                            required>
+                        <span class="focus-input"></span>
+                        <span class="icon-input">
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                    </span>
+                    </div>
 
-                <div class="wrap-input validate-input">
-                    <input 
-                        class="input-register <?php if($errorEmail != "") echo "validation-error"; ?>"
-                        title="<?php if($errorEmail != "") echo $errorEmail; ?>"
-                        value="<?php if(isset($_POST['email'])) echo $_POST['email']; ?>" 
-                        type="email" 
-                        name="email" 
-                        placeholder="Email" 
-                        required>
-                    <span class="focus-input"></span>
-                    <span class="icon-input">
-                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                </span>
-                </div>
+                    <div class="wrap-input validate-input">
+                        <input 
+                            class="input-register <?php if($errorEmail != "") echo "validation-error"; ?>"
+                            title="<?php if($errorEmail != "") echo $errorEmail; ?>"
+                            value="<?php if(isset($_POST['email'])) echo $_POST['email']; ?>" 
+                            type="email" 
+                            name="email" 
+                            placeholder="Email" 
+                            required>
+                        <span class="focus-input"></span>
+                        <span class="icon-input">
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                    </span>
+                    </div>
 
-                <div class="wrap-input validate-input">
-                    <input class="input-register" type="tel" name="telephone" placeholder="Teléfono" value="<?php if (isset($_POST['telephone'])) {
-                echo $_POST['telephone'];
-            } ?>" required>
-                    <span class="focus-input"></span>
-                    <span class="icon-input">
-                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                </span>
-                </div>
+                    <div class="wrap-input validate-input">
+                        <input class="input-register" type="tel" name="telephone" placeholder="Teléfono" value="<?php if (isset($_POST['telephone'])) {
+                    echo $_POST['telephone'];
+                } ?>" required>
+                        <span class="focus-input"></span>
+                        <span class="icon-input">
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                    </span>
+                    </div>
 
-                <div class="wrap-input validate-input">
-                    <input class="input-register" type="password" name="pass" placeholder="Contraseña" required>
-                    <span class="focus-input"></span>
-                    <span class="icon-input">
-                    <i class="fa fa-lock" aria-hidden="false"></i>
-                </span>
-                </div>
+                    <div class="wrap-input validate-input">
+                        <input class="input-register" type="password" name="pass" placeholder="Contraseña" required>
+                        <span class="focus-input"></span>
+                        <span class="icon-input">
+                        <i class="fa fa-lock" aria-hidden="false"></i>
+                    </span>
+                    </div>
 
-                <br>
-                <?php if($validationErrors > 0) {?>
-                    <div class="register-error">
-                        <p>Revise los campos marcados e inténtelo de nuevo</p>
+                    <br>
+                    <?php if($validationErrors > 0) {?>
+                        <div class="register-error">
+                            <p>Revise los campos marcados e inténtelo de nuevo</p>
+                        </div>
+                    <?php }?>
+                    <div class="btn-register">
+                        <input type="submit" class="register-form-btn" name="submit" value="Registrarse"></input>
+                    </div>
+
+                </form>
+                <?php } else {?>
+                    <div class="register-success">
+                        <p>Registro completado. Bienvenido a PHPeros</p>
+                        <p>Está siendo redireccionado a la página de login. Si no es redirigido automáticamente pulse <a href="index.php">aquí</a></p>
+                        <script language="javascript">setTimeout(function(){window.location.href="index.php";}, 5000);</script>
                     </div>
                 <?php }?>
-                <div class="btn-register">
-                    <input type="submit" class="register-form-btn" name="submit" value="Registrarse"></input>
-                </div>
-
-            </form>
-            <?php } else {?>
-                <div class="register-success">
-                    <p>Registro completado. Bienvenido a PHPeros</p>
-                    <p>Está siendo redireccionado a la página de login. Si no es redirigido automáticamente pulse <a href="index.php">aquí</a></p>
-                    <script language="javascript">setTimeout(function(){window.location.href="index.php";}, 5000);</script>
-                </div>
-            <?php }?>
+            </div>
         </div>
     </div>
 </div>

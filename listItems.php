@@ -14,16 +14,19 @@
             $listName = "Profesores";
             $editItemUrl = "editTeacher.php";
             $editItemName = "teacherId";
+            $newItemText = "Crear profesor";
             break;
         case CLASSITEM:
             $listName = "Clases";
             $editItemUrl = "editClass.php";
             $editItemName = "classId";
+            $newItemText = "Crear clase";
             break;
         case COURSEITEM:
             $listName = "Cursos";
             $editItemUrl = "editCourse.php";
             $editItemName = "courseId";
+            $newItemText = "Crear curso";
             break;
     }
 
@@ -36,7 +39,7 @@
                 echo "<th>#</th><th>Nombre</th><th>Apellidos</th><th>Teléfono</th><th>NIF</th><th>Email</th><th>Acciones</th>";
                 break;
             case CLASSITEM:
-                echo "<th>#</th><th>Nombre</th><th>Color</th><th>Profesor</th><th>Curso</th><th>Fecha</th><th>Hora Inicio</th><th>Hora Fin</th><th>Acciones</th>";
+                echo "<th>#</th><th>Nombre</th><th>Color</th><th>Profesor</th><th>Curso</th><th>Acciones</th>";
                 break;
             case COURSEITEM:
                 echo "<th>#</th><th>Nombre</th><th>Descripción</th><th>Fecha Inicio</th><th>Fecha Fin</th><th>Activo</th><th>Acciones</th>";
@@ -71,13 +74,13 @@
                 echo "</td>";
                 break;
             case CLASSITEM:
-                echo "<td>".$row["id_class"]."</td><td>".$row["name"]."</td><td>".$row["color"]."</td><td>".$row["teacherName"]."</td><td>".$row["courseName"]."</td><td>".$row["scheduleDate"]."</td><td>".$row["scheduleTimeStart"]."</td><td>".$row["scheduleTimeEnd"]."</td><td>";
+                echo "<td>".$row["id_class"]."</td><td>".$row["name"]."</td><td>".$row["color"]."</td><td>".$row["teacherName"]."</td><td>".$row["courseName"]."</td><td>";
                 addEditAction($row["id_class"]);
                 addDeleteAction($row["id_class"]);
                 echo "</td>";
                 break;
             case COURSEITEM:
-                echo "<td>".$row["id_course"]."</td><td>".$row["name"]."</td><td>".$row["description"]."</td><td>".$row["date_start"]."</td><td>".$row["date_end"]."</td><td>".$row["active"]."</td><td></td>";
+                echo "<td>".$row["id_course"]."</td><td>".$row["name"]."</td><td>".$row["description"]."</td><td>".$row["date_start"]."</td><td>".$row["date_end"]."</td><td>".$row["active"]."</td><td>";
                 addEditAction($row["id_course"]);
                 addDeleteAction($row["id_course"]);
                 echo "</td>";
@@ -95,7 +98,7 @@
                 $sql = "SELECT id_teacher, name, surname, telephone, nif, email FROM teachers";
                 break;
             case CLASSITEM:
-                $sql = "select c.id_class, c.name, c.color, CONCAT(t.name, ' ', t.surname) as teacherName, co.name as courseName, s.day as scheduleDate, s.time_start as scheduleTimeStart, s.time_end as scheduleTimeEnd FROM class c INNER JOIN teachers t ON c.id_teacher = t.id_teacher INNER JOIN courses co on c.id_course = co.id_course INNER JOIN schedule s on c.id_schedule = s.id_schedule";
+                $sql = "select c.id_class, c.name, c.color, CONCAT(t.name, ' ', t.surname) as teacherName, co.name as courseName FROM class c INNER JOIN teachers t ON c.id_teacher = t.id_teacher INNER JOIN courses co on c.id_course = co.id_course";
                 break;
             case COURSEITEM:
                 $sql = "SELECT id_course, name, description, date_start, date_end, active from courses";
@@ -122,6 +125,9 @@
     </div>
     <div class="container-register">
         <div class="wrap-register">
+            <div class="add-items-actions">
+                <a href="<?php echo $editItemUrl."?".$editItemName."=".NEWITEM;?>"><?php echo $newItemText;?></a>
+            </div>
             <?php drawtable();?>
         </div>
     </div>

@@ -1,5 +1,8 @@
 <?php
     require("config.php");
+    if(isset($_SESSION["role"])) {
+        $isAdmin = $_SESSION["role"] == ROLES[1];
+    }
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -23,10 +26,14 @@
             <a href="index.php"><strong>PHP</strong>eros</a>
         </div>
         <ul id="menu">
-            <li><a href="#">Inicio</a></li>
-            <li><a href="#">Profesores</a></li>
-            <li><a href="#">Asignaturas</a></li>
-            <li><a href="#">Cursos</a></li>
+            <?php if(isset($_SESSION["userName"])) {?>
+            <li><a href="#">Calendario</a></li>
+            <?php if($isAdmin) {?>
+            <li><a href="listItems.php?itemType=<?php echo TEACHERITEM;?>">Profesores</a></li>
+            <li><a href="listItems.php?itemType=<?php echo COURSEITEM;?>">Cursos</a></li>
+            <li><a href="listItems.php?itemType=<?php echo CLASSITEM;?>">Clases</a></li>
+            <?php }?>
+            <?php }?>
         </ul>
         <div class="session">
             <?php if(isset($_SESSION["role"])) {?>
