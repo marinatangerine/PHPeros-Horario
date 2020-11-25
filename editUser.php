@@ -162,7 +162,7 @@
                                 required>
                             <span class="focus-input"></span>
                             <span class="icon-input">
-                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                            <i class="fa fa-child" aria-hidden="true"></i>
                         </span>
                         </div>
 
@@ -171,7 +171,7 @@
                             value="<?php if (isset($_POST['name'])) echo $_POST['name']; else echo $name;?>" required>
                             <span class="focus-input"></span>
                             <span class="icon-input">
-                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
                         </span>
                         </div>
 
@@ -181,7 +181,7 @@
                                 value="<?php if (isset($_POST['surname'])) echo $_POST['surname']; else echo $surname;?>" required>
                                 <span class="focus-input"></span>
                                 <span class="icon-input">
-                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
                             </span>
                             </div>
                         <?php }?>
@@ -198,7 +198,7 @@
                                     required>
                                 <span class="focus-input"></span>
                                 <span class="icon-input">
-                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
                             </span>
                             </div>
                         <?php }?>
@@ -224,7 +224,7 @@
                             value="<?php if (isset($_POST['telephone'])) echo $_POST['telephone']; else echo $telephone?>" required>
                             <span class="focus-input"></span>
                             <span class="icon-input">
-                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                            <i class="fa fa-phone" aria-hidden="true"></i>
                         </span>
                         </div>
                         <?php }?>

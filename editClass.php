@@ -183,7 +183,7 @@
                                 required>
                             <span class="focus-input"></span>
                             <span class="icon-input">
-                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
                             </span>
                         </div>
 
