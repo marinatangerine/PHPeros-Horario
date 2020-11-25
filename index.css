@@ -342,3 +342,16 @@
         text-align: right;
         margin-bottom: 5px;
     }
+    
+    table.data-table td.status-icon {
+        font-size: 25px;
+        text-align: center;
+    }
+    
+    table.data-table td.status-icon.ok {
+        color: #008404;
+    }
+    
+    table.data-table td.status-icon.nok {
+        color: #b10000;
+    }

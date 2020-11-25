@@ -30,7 +30,9 @@
             <li><a href="#">Calendario</a></li>
             <?php if($isAdmin) {?>
             <li><a href="listItems.php?itemType=<?php echo TEACHERITEM;?>">Profesores</a></li>
+            <?php }?>
             <li><a href="listItems.php?itemType=<?php echo COURSEITEM;?>">Cursos</a></li>
+            <?php if($isAdmin) {?>
             <li><a href="listItems.php?itemType=<?php echo CLASSITEM;?>">Clases</a></li>
             <?php }?>
             <?php }?>

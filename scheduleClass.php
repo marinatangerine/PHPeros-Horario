@@ -15,7 +15,7 @@
 
     $timeError = "";
     $dateError = "";
-    $returnUrl = "listItems.php?itemType=class";
+    $returnUrl = "listItems.php?itemType=".CLASSITEM;
     $courseDateStart = "";
     $courseDateEnd = "";
     $className = "";
