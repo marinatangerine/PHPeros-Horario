@@ -24,7 +24,7 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
-        padding: 50px 80px 50px 80px;
+        padding: 50px 30px 50px 30px;
         margin-bottom: 15%;
     }
     
@@ -282,7 +282,8 @@
         margin: 0 15px;
     }
     
-    table.data-table {
+    table.data-table,
+    table.calendar-table {
         width: 100%;
         border-spacing: 0;
     }
@@ -354,4 +355,46 @@
     
     table.data-table td.status-icon.nok {
         color: #b10000;
+    }
+    
+    div.calendar-header {
+        width: 100%;
+        text-align: center;
+        line-height: 25px;
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    
+    div.calendar-header .name {
+        margin: 0 10px;
+        font-size: 20px;
+    }
+    
+    table.calendar-table td {
+        text-align: center;
+        height: 150px;
+        border: 1px solid #e8e8e8;
+        width: 150px;
+        vertical-align: top;
+    }
+    
+    .calendarItem {
+        text-align: left;
+    }
+    
+    .calendarItem :first-child {
+        display: block;
+        font-weight: bold;
+        padding: 0 5px;
+    }
+    
+    .inactive {
+        background-color: #ececec;
+    }
+    
+    .scheduleElement {
+        font-size: 14px;
+        padding: 3px;
+        border-radius: 5px;
+        margin-bottom: 3px;
     }

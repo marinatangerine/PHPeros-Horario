@@ -18,6 +18,8 @@ define("TEACHERITEM", "teacher");  //identificador de procesores
 define("COURSEITEM", "course");  //identificador de alumnos
 define("SCHEDULEITEM", "schedule");  //identificador de horario
 
+define("MONTHS", ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]);
+
 
 function redirectHome(){
     switch($_SESSION["role"]) {

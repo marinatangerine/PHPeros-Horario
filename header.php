@@ -27,7 +27,7 @@
         </div>
         <ul id="menu">
             <?php if(isset($_SESSION["userName"])) {?>
-            <li><a href="#">Calendario</a></li>
+            <li><a href="calendar.php">Calendario</a></li>
             <?php if($isAdmin) {?>
             <li><a href="listItems.php?itemType=<?php echo TEACHERITEM;?>">Profesores</a></li>
             <?php }?>
