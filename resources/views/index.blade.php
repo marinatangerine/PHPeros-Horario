@@ -31,7 +31,7 @@
                     <input type="submit" class="login-form-btn" name="submit" value="Entrar"></input>
                 </div>
                 <div class="register">
-                    <span><a href="register.php"> <p>Regístrate </a>para formar parte de nuestra comunidad</p> </span>
+                    <span><a href="signup"> <p>Regístrate </a>para formar parte de nuestra comunidad</p> </span>
                 </div>
                 <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
             </form>

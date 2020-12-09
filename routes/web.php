@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\DTOs\SignUpResultDTO;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,5 +19,14 @@ Route::get('/', function () {
     return view("index", ["errorLogin" => ""]);
 })->name('index');
 
+Route::get('/index', function () {
+    return view("index", ["errorLogin" => ""]);
+});
+
+Route::get('/signup', function () {
+    return view("signup", ["result" => new SignUpResultDTO]);
+})->name('signup');
+
 Route::post('/login', [UserController::class, 'login']);
 Route::get('/logout', [UserController::class, 'logout']);
+Route::post('/signup', [UserController::class, 'signup']);
