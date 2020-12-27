@@ -110,7 +110,7 @@
             @else
                 <div class="register-success">
                     <p>Registro completado. Bienvenido a PHPeros</p>
-                    <p>Está siendo redireccionado a la página de login. Si no es redirigido automáticamente pulse <a href="index">aquí</a></p>
+                    <p>Está siendo redireccionado a su página principal. Si no es redirigido correctamente pulse <a href="index">aquí</a></p>
                     <script language="javascript">setTimeout(function(){window.location.href="index";}, 5000);</script>
                 </div>
             @endif

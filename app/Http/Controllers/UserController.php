@@ -72,6 +72,18 @@ class UserController extends Controller
             $validationErrors++;
         }
 
+        $user = Teacher::where('email', $email) ->first();
+        if ($user) {
+            $errorEmail = "Ya existe un usuario registrado con ese email";
+            $validationErrors++;
+        }
+
+        $user = UsersAdmin::where('email', $email) ->first();
+        if ($user) {
+            $errorEmail = "Ya existe un usuario registrado con ese email";
+            $validationErrors++;
+        }
+
         //validación de username
         $user = Student::where('username', $username)->first();
         if ($user) {
@@ -81,6 +93,12 @@ class UserController extends Controller
 
         //validación de nif
         $user = Student::where('nif', $nif)->first();
+        if ($user) {
+            $errorNIF = "Ya existe un usuario registrado con ese NIF";
+            $validationErrors++;
+        }
+
+        $user = Teacher::where('nif', $nif)->first();
         if ($user) {
             $errorNIF = "Ya existe un usuario registrado con ese NIF";
             $validationErrors++;
@@ -97,7 +115,7 @@ class UserController extends Controller
 
         if($validationErrors == 0) {
             $student = new Student;
-            $student->date_registered = date("Y-m-d H:i:s");;
+            $student->date_registered = date("Y-m-d H:i:s");
             $student->email = $email;
             $student->name = $name;
             $student->nif = $nif;
@@ -107,8 +125,11 @@ class UserController extends Controller
             $student->username = $username;
 
             try {
+                //guardamos el modelo
                 $student->save();
+                //si strudent.save no falla, marcamos el success de nuestro DTO a true
                 $result->success = true;
+                //cargamos el usuario en sesión para que se loguee automáticamente
                 $user = Student::where('email', $email)->first();
                 $this->updateSessionData($user, 3);
             } catch (\Exception $ex) {
