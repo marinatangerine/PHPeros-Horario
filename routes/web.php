@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\TeacherController;
 use App\Http\DTOs\SignUpResultDTO;
+use App\Http\DTOs\EditUserResultDTO;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,3 +32,6 @@ Route::get('/signup', function () {
 Route::post('/login', [UserController::class, 'login']);
 Route::get('/logout', [UserController::class, 'logout']);
 Route::post('/signup', [UserController::class, 'signup']);
+Route::get('/editUser', [UserController::class, 'loadUser'])->name('editUser');
+Route::post('/editUser', [UserController::class, 'updateUser'])->name('editUser');
+Route::get('/teachers', [TeacherController::class, 'getTeachers'])->name('teachers');

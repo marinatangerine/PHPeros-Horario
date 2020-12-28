@@ -23,7 +23,7 @@
             @if(Session::has('role'))
                 <li><a href="calendar.php">Calendario</a></li>
                 @if(Session::get('role') === 1)
-                <li><a href="listItems.php?itemType=teacher">Profesores</a></li>
+                <li><a href="teachers">Profesores</a></li>
                 @endif
                 <li><a href="listItems.php?itemType=course">Cursos</a></li>
                 @if(Session::get('role') < 3)
@@ -37,7 +37,7 @@
                     Bienvenid@ {{ Session::get('user')->name }}!
                 </div>
                 <div>
-                    <a class="icon" href="editUser.php">
+                    <a class="icon" href="editUser">
                         <i class="fa fa-cog" aria-hidden="true"></i>
                     </a>
                     <a class="icon" href="logout">
