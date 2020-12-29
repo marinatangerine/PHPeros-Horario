@@ -25,9 +25,9 @@
                 @if(Session::get('role') === 1)
                 <li><a href="teachers">Profesores</a></li>
                 @endif
-                <li><a href="listItems.php?itemType=course">Cursos</a></li>
+                <li><a href="courses">Cursos</a></li>
                 @if(Session::get('role') < 3)
-                <li><a href="listItems.php?itemType=class">Clases</a></li>
+                <li><a href="subjects">Clases</a></li>
                 @endif
             @endif
         </ul>

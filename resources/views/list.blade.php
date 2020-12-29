@@ -39,7 +39,7 @@
                                     <a class="icon" href="{{$data->editItemUrl}}/{{$item->id_teacher}}/delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                 </td>
                                 @break
-                            @case('class')
+                            @case('subject')
                                 <td>{{$item->id_class}}</td><td>{{$item->name}}</td><td>{{$item->color}}</td><td>{{$item->teacherName}}</td><td>{{$item->courseName}}</td>
                                 <td>
                                     <a class="icon" href="{{$data->editItemUrl}}/{{$item->id_class}}"><i class="fa fa-edit" aria-hidden="true"></i></a>
@@ -52,13 +52,11 @@
                             @case('course')
                                 @if(Session::get('role') === 1)
                                     <td>{{$item->id_course}}</td><td>{{$item->name}}</td><td>{{$item->description}}</td><td>{{$item->date_start}}</td><td>{{$item->date_end}}</td>
-                                    <td>
                                         @if($item->active == 1)
                                             <td class="status-icon ok"><span class="icon"><i class="fa fa-check fa-sm" aria-hidden="true"></i></span></td>
                                         @else
                                             <td class="status-icon nok"><span class="icon"><i class="fa fa-check fa-sm" aria-hidden="true"></i></span></td>
                                         @endif
-                                    </td>
                                     <td>
                                         <a class="icon" href="{{$data->editItemUrl}}/{{$item->id_course}}"><i class="fa fa-edit" aria-hidden="true"></i></a>
                                         <a class="icon" href="{{$data->editItemUrl}}/{{$item->id_course}}/delete"><i class="fa fa-trash" aria-hidden="true"></i></a>

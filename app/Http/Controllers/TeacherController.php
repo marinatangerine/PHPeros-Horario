@@ -33,6 +33,3 @@ class TeacherController extends Controller
         return view("list", ["data" => $data]);        
     }
 }
-
-
-

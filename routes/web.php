@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\CourseController;
 use App\Http\DTOs\SignUpResultDTO;
 use App\Http\DTOs\EditUserResultDTO;
 
@@ -35,3 +37,5 @@ Route::post('/signup', [UserController::class, 'signup']);
 Route::get('/editUser', [UserController::class, 'loadUser'])->name('editUser');
 Route::post('/editUser', [UserController::class, 'updateUser'])->name('editUser');
 Route::get('/teachers', [TeacherController::class, 'getTeachers'])->name('teachers');
+Route::get('/subjects', [SubjectController::class, 'getSubjects'])->name('subjects');
+Route::get('/courses', [CourseController::class, 'getCourses'])->name('courses');
