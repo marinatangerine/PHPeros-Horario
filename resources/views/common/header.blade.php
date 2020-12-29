@@ -17,17 +17,17 @@
 <body>
     <div class="header">
         <div class="title">
-            <a href="index.php"><strong>PHP</strong>3ros</a>
+            <a href="{{url('/')}}"><strong>PHP</strong>3ros</a>
         </div>
         <ul id="menu">
             @if(Session::has('role'))
                 <li><a href="calendar.php">Calendario</a></li>
                 @if(Session::get('role') === 1)
-                <li><a href="teachers">Profesores</a></li>
+                <li><a href="{{url('/teachers')}}">Profesores</a></li>
                 @endif
-                <li><a href="courses">Cursos</a></li>
+                <li><a href="{{url('/courses')}}">Cursos</a></li>
                 @if(Session::get('role') < 3)
-                <li><a href="subjects">Clases</a></li>
+                <li><a href="{{url('/subjects')}}">Clases</a></li>
                 @endif
             @endif
         </ul>
@@ -37,10 +37,10 @@
                     Bienvenid@ {{ Session::get('user')->name }}!
                 </div>
                 <div>
-                    <a class="icon" href="editUser">
+                    <a class="icon" href="{{url('/editUser')}}">
                         <i class="fa fa-cog" aria-hidden="true"></i>
                     </a>
-                    <a class="icon" href="logout">
+                    <a class="icon" href="{{url('/logout')}}">
                         <i class="fa fa-sign-out" aria-hidden="true"></i>
                     </a>
                 </div>
