@@ -25,6 +25,7 @@ class TeacherController extends Controller
         foreach (Teacher::all() as $item) {
             $result = new GetTeachersResultDTO;
             $result->id_teacher = $item->id_teacher;
+            $result->username = $item->username;
             $result->name = $item->name;
             $result->surname = $item->surname;
             $result->nif = $item->nif;
@@ -37,21 +38,28 @@ class TeacherController extends Controller
     }
 
     public function getTeacher($id){
-        $item = Teacher::where('id_teacher', $id)->first();
-        if ($item) {
+        if ($id == 'new') {
             $result = new EditTeacherResultDTO;
-            $result->name = $item->name;
-            $result->surname = $item->surname;
-            $result->nif = $item->nif;
-            $result->email = $item->email;
-            $result->telephone = $item->telephone;
-            $result->id_teacher = $item->id_teacher;
-
-            return view("editTeacher", ["result" => $result]);
+            $result->formTitle = 'Crear Profesor';
+        } else {
+            $item = Teacher::where('id_teacher', $id)->first();
+            if ($item) {
+                $result = new EditTeacherResultDTO;
+                $result->username = $item->username;
+                $result->name = $item->name;
+                $result->surname = $item->surname;
+                $result->nif = $item->nif;
+                $result->email = $item->email;
+                $result->telephone = $item->telephone;
+                $result->id_teacher = $item->id_teacher;
+                $result->formTitle = 'Editar Profesor';
+            }            
         }
+        return view("editTeacher", ["result" => $result]);
     }
 
     public function updateTeacher($id, Request $request) {
+        $username=$request->username;
         $name=$request->name;
         $email=$request->email;
         $surname=$request->surname;
@@ -60,9 +68,33 @@ class TeacherController extends Controller
     
         $validationErrors = 0;
 
-        $user = Teacher::where('id_teacher', $id)->first();
+        if ($id == 'new') {
+            $user = new Teacher;
+        } else {
+            $user = Teacher::where('id_teacher', $id)->first();
+        }
 
-        if ($email != $user->email) {
+        if($username != $user->username) {
+            $dbUser = Student::where('username', $username)->first();
+            if ($dbUser) {
+                $errorUsername = "Ya existe un usuario registrado con ese numbre de usuario";
+                $validationErrors++;
+            }
+
+            $dbUser = Teacher::where('username', $username)->first();
+            if ($dbUser) {
+                $errorUsername = "Ya existe un usuario registrado con ese numbre de usuario";
+                $validationErrors++;
+            }
+
+            $dbUser = UsersAdmin::where('username', $username)->first();
+            if ($dbUser) {
+                $errorUsername = "Ya existe un usuario registrado con ese numbre de usuario";
+                $validationErrors++;
+            }
+        }
+
+        if ($email != $user->email || $id == 'new') {
             $dbUser = Student::where('email', $email)->first();
             if ($dbUser) {
                 $errorEmail = "Ya existe un usuario registrado con ese email";
@@ -82,7 +114,7 @@ class TeacherController extends Controller
             }
         }
 
-        if ($nif != $user->nif) {
+        if ($nif != $user->nif || $id == 'new') {
             $dbUser = Student::where('nif', $nif)->first();
             if ($dbUser) {
                 $errorNIF = "Ya existe un usuario registrado con ese NIF";
@@ -97,6 +129,7 @@ class TeacherController extends Controller
         }
 
         $result = new EditTeacherResultDTO;
+        $result->username = $username;
         $result->name = $name;
         $result->email = $email;
         $result->nif = $nif;
@@ -104,16 +137,18 @@ class TeacherController extends Controller
         $result->telephone = $telephone;
 
         if ($validationErrors == 0) {
+            $user->username = $username;
             $user->name = $name;
             $user->email = $email;
             $user->nif = $nif;
             $user->surname = $surname;
             $user->telephone = $telephone;
+            $user->pass = '123';
 
             try {
                 //guardamos el modelo
                 $user->save();
-                //si strudent.save no falla, marcamos el success de nuestro DTO a true
+                //si teacher.save no falla, marcamos el success de nuestro DTO a true
                 $result->success = true;
             } catch (\Exception $ex) {
                 $result->serverError = $ex->getMessage();
@@ -123,11 +158,17 @@ class TeacherController extends Controller
         } else {
             $result->success = false;
             $result->validationErrors = $validationErrors ?? 0;
+            $result->errorUserName = $errorUserName ?? '';
             $result->errorEmail = $errorEmail ?? '';
             $result->errorNIF = $errorNIF ?? '';
             return view('editTeacher', ['id'=>$id, 'result' => $result]);
         }
 
+        return redirect()->route('teachers');
+    }
+
+    public function deleteTeacher($id) {
+        Teacher::where('id_teacher', $id)->delete();
         return redirect()->route('teachers');
     }
 

@@ -1,7 +1,7 @@
 @include("common.header")
 <div class="limiter">
     <div class="title-register">
-        <h1>Editar Profesor</h1>
+        <h1>{{$result->formTitle}}</h1>
     </div>
     <div class="container-register">
         <div class="wrap-register">
@@ -12,6 +12,22 @@
                 <div class="form-body">
                     <form action="{{$result->id_teacher}}" method="POST">
                         <span class="register-form-title"><p>{{$result->name . ' ' . $result->surname}}</p> </span>
+
+                        <div class="wrap-input validate-input">
+                                <input 
+                                    class="input-register @if($result->errorUserName != '') validation-error @endif"
+                                    title="@if($result->errorUserName != '') {{ $result->errorUserName }} @endif"
+                                    value="{{ $result->username }}"
+                                    type="text" 
+                                    name="username" 
+                                    placeholder="Nombre de usuario" 
+                                    required>
+                                <span class="focus-input"></span>
+                                <span class="icon-input">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </span>
+                        </div>
+
                         <div class="wrap-input validate-input">
                             <input class="input-register" type="text" name="name" placeholder="Nombre" 
                             value="{{ $result->name }}"required>
@@ -69,6 +85,9 @@
                         </span>
                         </div>
                         <br>
+                        <div class="register-error">
+                            <p>El password por defecto de los profesores es 123</p>
+                        </div>
                         @if($result->validationErrors > 0)
                             <div class="register-error">
                                 <p>Revise los campos marcados e inténtelo de nuevo</p>
@@ -78,7 +97,7 @@
                             <input type="submit" class="register-form-btn" name="submit" value="Guardar"></input>
                         </div>
                         <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
-                        <p><a href="teachers">Cancelar</a></p>
+                        <p><a href="{{url('/teachers')}}">Cancelar</a></p>
                     </form>
                 </div>
             </div>

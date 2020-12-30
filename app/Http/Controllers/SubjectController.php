@@ -19,17 +19,20 @@ class SubjectController extends Controller
         $data->editItemUrl = "subjects";
         $data->newItemText = "Crear clase";
 
-        foreach (Subject::all() as $item) {
+        $items = Subject::with('teacher', 'course')->get();
+        foreach ($items as $item) {
+            $teacher = $item->teacher;
+            $course = $item->course;
+
             $result = new GetSubjectsResultDTO;
             $result->id_class = $item->id_class;
             $result->name = $item->name;
             $result->color = $item->color;
-            $result->teacherName = $item->teacherName;
-            $result->courseName = $item->courseName;
-            $result->courseActive = $item->courseActive;
+            $result->teacherName = $teacher->name .' '. $teacher->surname;
+            $result->courseName = $course->name;
+            $result->courseActive = $course->active;
             $data->items[] = $result;
         }
-
         return view("list", ["data" => $data]);        
     }
 }

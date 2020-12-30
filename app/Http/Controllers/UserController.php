@@ -118,6 +118,18 @@ class UserController extends Controller
                 $errorUsername = "Ya existe un usuario registrado con ese numbre de usuario";
                 $validationErrors++;
             }
+
+            $dbUser = Teacher::where('username', $username)->first();
+            if ($dbUser) {
+                $errorUsername = "Ya existe un usuario registrado con ese numbre de usuario";
+                $validationErrors++;
+            }
+
+            $dbUser = UsersAdmin::where('username', $username)->first();
+            if ($dbUser) {
+                $errorUsername = "Ya existe un usuario registrado con ese numbre de usuario";
+                $validationErrors++;
+            }
         }
 
         if ($role > 1 && $nif != $user->nif) {
@@ -214,6 +226,18 @@ class UserController extends Controller
 
         //validación de username
         $user = Student::where('username', $username)->first();
+        if ($user) {
+            $errorUsername = "Ya existe un usuario registrado con ese numbre de usuario";
+            $validationErrors++;
+        }
+
+        $user = Teacher::where('username', $username)->first();
+        if ($user) {
+            $errorUsername = "Ya existe un usuario registrado con ese numbre de usuario";
+            $validationErrors++;
+        }
+
+        $user = UsersAdmin::where('username', $username)->first();
         if ($user) {
             $errorUsername = "Ya existe un usuario registrado con ese numbre de usuario";
             $validationErrors++;

@@ -6,8 +6,7 @@ use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\CourseController;
 use App\Http\DTOs\SignUpResultDTO;
-use App\Http\DTOs\EditUserResultDTO;
-use App\Http\DTOs\EditTeacherResultDTO;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -42,3 +41,7 @@ Route::get('/subjects', [SubjectController::class, 'getSubjects'])->name('subjec
 Route::get('/courses', [CourseController::class, 'getCourses'])->name('courses');
 Route::get('/teachers/{id}', [TeacherController::class, 'getTeacher']);
 Route::post('/teachers/{id}', [TeacherController::class, 'updateTeacher']);
+Route::get('/teachers/{id}/delete', [TeacherController::class, 'deleteTeacher']);
+Route::get('/courses/{id}', [CourseController::class, 'getCourse']);
+Route::post('/courses/{id}', [CourseController::class, 'updateCourse']);
+Route::get('/courses/{id}/delete', [CourseController::class, 'deleteCourse']);

@@ -17,7 +17,7 @@
                         @case('teacher')
                             <th>#</th><th>Nombre</th><th>Apellidos</th><th>Teléfono</th><th>NIF</th><th>Email</th><th>Acciones</th>
                             @break
-                        @case('class')
+                        @case('subject')
                             <th>#</th><th>Nombre</th><th>Color</th><th>Profesor</th><th>Curso</th><th>Acciones</th>
                             @break
                         @case('course')
