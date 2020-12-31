@@ -8,5 +8,6 @@ class ListResultDTO {
     public $editItemUrl = '';
     public $editItemName = '';
     public $newItemText = '';
+    
     public $items = array();
 }
