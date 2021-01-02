@@ -11,7 +11,7 @@ use App\Models\Subject;
 use App\Models\Enrollment;
 use App\Http\DTOs\ListResultDTO;
 use App\Http\DTOs\GetCoursesResultDTO;
-use App\Http\DTOs\EditCourseResultDTO;;
+use App\Http\DTOs\EditCourseResultDTO;
 
 
 class CourseController extends Controller 

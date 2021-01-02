@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\ScheduleController;
 use App\Http\DTOs\SignUpResultDTO;
 
 
@@ -48,3 +49,6 @@ Route::get('/courses/{id}/delete', [CourseController::class, 'deleteCourse']);
 Route::get('/subjects/{id}', [SubjectController::class, 'getSubject']);
 Route::post('/subjects/{id}', [SubjectController::class, 'updateSubject']);
 Route::get('/subjects/{id}/delete', [SubjectController::class, 'deleteSubject']);
+Route::get('/subjects/{id}/schedule', [ScheduleController::class, 'getSchedule']);
+Route::post('/subjects/{id}/schedule', [ScheduleController::class, 'saveSchedule']);
+Route::get('/schedules/{id}/delete', [ScheduleController::class, 'deleteSchedule']);
