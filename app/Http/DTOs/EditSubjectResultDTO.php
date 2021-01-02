@@ -8,6 +8,7 @@ class EditSubjectResultDTO {
     public $color = '';
     public $id_teacher = '';
     public $id_course = '';
+    public $name_teacher = '';
     
     public $teachers = array();
     public $courses = array();
@@ -15,7 +16,5 @@ class EditSubjectResultDTO {
 
     public $formTitle = '';
 
-    public $validationErrors = 0;
-    public $serverError = '';
-    public $success = false;
+    public $emptyDropDowns = 0;
 }

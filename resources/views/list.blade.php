@@ -36,14 +36,18 @@
                                 <td>{{$item->id_teacher}}</td><td>{{$item->name}}</td><td>{{$item->surname}}</td><td>{{$item->telephone}}</td><td>{{$item->nif}}</td><td>{{$item->email}}</td>
                                 <td>
                                     <a class="icon" href="{{$data->editItemUrl}}/{{$item->id_teacher}}"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                                    @if(!$item->hasChildren)
                                     <a class="icon" href="{{$data->editItemUrl}}/{{$item->id_teacher}}/delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                    @endif
                                 </td>
                                 @break
                             @case('subject')
                                 <td>{{$item->id_class}}</td><td>{{$item->name}}</td><td>{{$item->color}}</td><td>{{$item->teacherName}}</td><td>{{$item->courseName}}</td>
                                 <td>
                                     <a class="icon" href="{{$data->editItemUrl}}/{{$item->id_class}}"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                                    @if(!$item->hasChildren)
                                     <a class="icon" href="{{$data->editItemUrl}}/{{$item->id_class}}/delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                    @endif
                                     @if($item->courseActive == 1)
                                         <a class="icon" href="{{$data->editItemUrl}}/{{$item->id_class}}/schedule"><i class="fa fa-calendar" aria-hidden="true"></i></a>
                                     @endif
@@ -59,7 +63,9 @@
                                         @endif
                                     <td>
                                         <a class="icon" href="{{$data->editItemUrl}}/{{$item->id_course}}"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                                        @if(!$item->hasChildren)
                                         <a class="icon" href="{{$data->editItemUrl}}/{{$item->id_course}}/delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                        @endif
                                     </td>
                                 @elseif(Session::get('role') === 3)
                                     <td>{{$item->id_course}}</td><td>{{$item->name}}</td><td>{{$item->description}}</td><td>{{$item->date_start}}</td><td>{{$item->date_end}}</td>

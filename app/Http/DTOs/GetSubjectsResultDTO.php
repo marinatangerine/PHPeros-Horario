@@ -9,4 +9,6 @@ class GetSubjectsResultDTO {
     public $teacherName = '';
     public $courseName = '';
     public $courseActive = '';
+
+    public $hasChildren = false;
 }

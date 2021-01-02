@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\Subject;
+use App\Models\Enrollment;
 use App\Http\DTOs\ListResultDTO;
 use App\Http\DTOs\GetCoursesResultDTO;
 use App\Http\DTOs\EditCourseResultDTO;;
@@ -29,6 +31,7 @@ class CourseController extends Controller
             $result->date_start = $item->date_start;
             $result->date_end = $item->date_end;
             $result->active = $item->active;
+            $result->hasChildren = (Subject::where('id_course', $item->id_course)->count()) + (Enrollment::where('id_course', $item->id_course)->count()) > 0;
             $data->items[] = $result;
         }
 

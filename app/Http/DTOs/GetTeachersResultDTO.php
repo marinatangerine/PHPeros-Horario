@@ -10,4 +10,6 @@ class GetTeachersResultDTO {
     public $nif = '';
     public $email = '';
     public $telephone = '';
+
+    public $hasChildren = false;
 }

@@ -9,4 +9,6 @@ class GetCoursesResultDTO {
     public $date_start = '';
     public $date_end = '';
     public $active = '';
+
+    public $hasChildren = false;
 }

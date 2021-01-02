@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\Controller;
 use App\Models\Student;
 use App\Models\Teacher;
+use App\Models\Subject;
 use App\Models\UsersAdmin;
 use App\Http\DTOs\ListResultDTO;
 use App\Http\DTOs\GetTeachersResultDTO;
@@ -31,6 +32,7 @@ class TeacherController extends Controller
             $result->nif = $item->nif;
             $result->email = $item->email;
             $result->telephone = $item->telephone;
+            $result->hasChildren = Subject::where('id_teacher', $item->id_teacher)->count() > 0;
             $data->items[] = $result;
         }
 

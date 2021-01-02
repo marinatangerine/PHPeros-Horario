@@ -45,3 +45,6 @@ Route::get('/teachers/{id}/delete', [TeacherController::class, 'deleteTeacher'])
 Route::get('/courses/{id}', [CourseController::class, 'getCourse']);
 Route::post('/courses/{id}', [CourseController::class, 'updateCourse']);
 Route::get('/courses/{id}/delete', [CourseController::class, 'deleteCourse']);
+Route::get('/subjects/{id}', [SubjectController::class, 'getSubject']);
+Route::post('/subjects/{id}', [SubjectController::class, 'updateSubject']);
+Route::get('/subjects/{id}/delete', [SubjectController::class, 'deleteSubject']);
