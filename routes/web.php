@@ -9,6 +9,7 @@ use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\ExamController;
+use App\Http\Controllers\WorkController;
 use App\Http\DTOs\SignUpResultDTO;
 
 
@@ -61,3 +62,6 @@ Route::get('/calendar', [CalendarController::class, 'getCalendarData'])->name('c
 Route::get('/subjects/{id}/scheduleexam', [ExamController::class, 'getExamsData']);
 Route::post('/subjects/{id}/scheduleexam', [ExamController::class, 'saveExam']);
 Route::get('/exams/{id}/delete', [ExamController::class, 'deleteExam']);
+Route::get('/subjects/{id}/schedulework', [WorkController::class, 'getWorksData']);
+Route::post('/subjects/{id}/schedulework', [WorkController::class, 'saveWork']);
+Route::get('/works/{id}/delete', [WorkController::class, 'deleteWork']);

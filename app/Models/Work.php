@@ -27,11 +27,9 @@ class Work extends Model
 {
 	protected $table = 'works';
 	protected $primaryKey = 'id_work';
-	public $incrementing = false;
 	public $timestamps = false;
 
 	protected $casts = [
-		'id_work' => 'int',
 		'id_class' => 'int'
 	];
 

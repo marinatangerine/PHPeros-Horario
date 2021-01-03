@@ -2,8 +2,8 @@
 
 namespace App\Http\DTOs;
 
-class GetExamResultDTO {
-    public $id_exam = '';
+class GetWorkResultDTO {
+    public $id_work = '';
     public $date = '';
     public $name = '';
     public $course_name = '';

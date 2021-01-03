@@ -53,6 +53,7 @@
                                     @if($item->courseActive == 1)
                                         <a class="icon" href="{{$data->editItemUrl}}/{{$item->id_class}}/schedule"><i class="fa fa-calendar" aria-hidden="true"></i></a>
                                         <a class="icon" href="{{$data->editItemUrl}}/{{$item->id_class}}/scheduleexam"><i class="fa fa-file" aria-hidden="true"></i></a>
+                                        <a class="icon" href="{{$data->editItemUrl}}/{{$item->id_class}}/schedulework"><i class="fa fa-book" aria-hidden="true"></i></a>
                                     @endif
                                 </td>
                                 @break
