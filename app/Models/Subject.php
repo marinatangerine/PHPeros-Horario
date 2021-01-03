@@ -44,7 +44,7 @@ class Subject extends Model
 		'color'
 	];
 
-	public function color()
+	public function colorR()
 	{
 		return $this->belongsTo(Color::class, 'color');
 	}

@@ -21,7 +21,7 @@
         </div>
         <ul id="menu">
             @if(Session::has('role'))
-                <li><a href="calendar.php">Calendario</a></li>
+                <li><a href="{{url('/calendar')}}">Calendario</a></li>
                 @if(Session::get('role') === 1)
                 <li><a href="{{url('/teachers')}}">Profesores</a></li>
                 @endif

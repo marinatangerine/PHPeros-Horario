@@ -9,6 +9,7 @@ class GetScheduleResultDTO {
     public $time_end = '';
     public $course_name = '';
     public $class_name = '';
+    public $bg_color = '';
+    public $text_color = '';
     public $teacher_name = '';
-    
 }
