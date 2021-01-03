@@ -70,3 +70,5 @@ Route::get('/exams/{id}/marks', [MarksController::class, 'getExamMarks']);
 Route::get('/works/{id}/marks', [MarksController::class, 'getWorkMarks']);
 Route::post('/exams/{id}/marks', [MarksController::class, 'saveExamMarks']);
 Route::post('/works/{id}/marks', [MarksController::class, 'saveWorkMarks']);
+Route::get('/subjects/{id}/percentages', [SubjectController::class, 'getSubjectPercentages']);
+Route::post('/subjects/{id}/percentages', [SubjectController::class, 'saveSubjectPercentages']);

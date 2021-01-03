@@ -12,10 +12,12 @@ use App\Models\Color;
 use App\Models\Schedule;
 use App\Models\Work;
 use App\Models\Exam;
+use App\Models\Percentage;
 use App\Http\DTOs\ListResultDTO;
 use App\Http\DTOs\GetSubjectsResultDTO;
 use App\Http\DTOs\EditSubjectResultDTO;
 use App\Http\DTOs\SelectResultDTO;
+use App\Http\DTOs\EditSubjectPercentagesResultDTO;
 
 
 class SubjectController extends Controller 
@@ -108,6 +110,36 @@ class SubjectController extends Controller
             }
         }
         return view("editSubject", ["result" => $result]);
+    }
+
+    public function getSubjectPercentages($id) {
+        $result = new EditSubjectPercentagesResultDTO;
+        
+        $subject = Subject::with('percentages')->where('id_class', $id)->first();
+        $result->name = $subject->name;
+        $result->id_class = $id;
+
+        $percentages = $subject->percentages->first();
+        if ($percentages) {
+            $result->continuous_assessment = $percentages->continuous_assessment;
+            $result->exams = $percentages->exams;
+        }
+
+        return view("editSubjectPercentages", ["result" => $result]);
+    }
+
+    public function saveSubjectPercentages($id, Request $request) {
+        $continuous_assessment = $request->continuous_assessment;
+        $exams = $request->exams;
+
+        Percentage::where('id_class', $id)->delete();
+        $percentage = new Percentage;
+        $percentage->id_class = $id;
+        $percentage->continuous_assessment = $continuous_assessment;
+        $percentage->exams = $exams;
+        $percentage->save();
+
+        return redirect()->route('subjects');
     }
 
     public function updateSubject($id, Request $request) {
