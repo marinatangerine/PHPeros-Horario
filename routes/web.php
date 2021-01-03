@@ -11,6 +11,7 @@ use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\WorkController;
 use App\Http\Controllers\MarksController;
+use App\Http\Controllers\TranscriptController;
 use App\Http\DTOs\SignUpResultDTO;
 
 
@@ -72,3 +73,5 @@ Route::post('/exams/{id}/marks', [MarksController::class, 'saveExamMarks']);
 Route::post('/works/{id}/marks', [MarksController::class, 'saveWorkMarks']);
 Route::get('/subjects/{id}/percentages', [SubjectController::class, 'getSubjectPercentages']);
 Route::post('/subjects/{id}/percentages', [SubjectController::class, 'saveSubjectPercentages']);
+Route::get('/transcript/{id}', [TranscriptController::class, 'getStudentData']);
+Route::get('/transcript', [TranscriptController::class, 'getUserData']);

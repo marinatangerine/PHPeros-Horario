@@ -392,3 +392,34 @@ table.calendar-table td {
     border-radius: 5px;
     margin-bottom: 3px;
 }
+
+table.subdata-table {
+    width: 100%;
+    border-spacing: 0;
+}
+
+table.subdata-table tr {
+    line-height: 25px;
+    font-size: 14px;
+}
+
+table.subdata-table th {
+    background-color: #c2c2c2;
+    color: #000000;
+    font-weight: normal;
+}
+
+table.subdata-table th,
+table.subdata-table td {
+    text-align: left;
+    padding: 5px;
+}
+
+table.subdata-table td:last-child {
+    text-align: center;
+    font-size: 14px;
+}
+
+span.sub-header {
+    font-size: 14px;
+}

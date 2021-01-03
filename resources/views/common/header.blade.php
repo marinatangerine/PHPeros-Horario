@@ -31,6 +31,9 @@
                 @if(Session::get('role') < 3)
                 <li><a href="{{url('/subjects')}}">Clases</a></li>
                 @endif
+                @if(Session::get('role') == 3)
+                <li><a href="{{url('/transcript')}}">Expediente</a></li>
+                @endif
             @endif
         </ul>
         <div class="session">
