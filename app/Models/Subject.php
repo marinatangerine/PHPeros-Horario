@@ -21,6 +21,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Course $course
  * @property Teacher $teacher
  * @property Collection|Exam[] $exams
+ * @property Collection|Percentage[] $percentages
  * @property Collection|Schedule[] $schedules
  * @property Collection|Work[] $works
  *
@@ -62,6 +63,11 @@ class Subject extends Model
 	public function exams()
 	{
 		return $this->hasMany(Exam::class, 'id_class');
+	}
+
+	public function percentages()
+	{
+		return $this->hasMany(Percentage::class, 'id_class');
 	}
 
 	public function schedules()
