@@ -44,7 +44,9 @@
                             @case('subject')
                                 <td>{{$item->id_class}}</td><td>{{$item->name}}</td><td>{{$item->color}}</td><td>{{$item->teacherName}}</td><td>{{$item->courseName}}</td>
                                 <td>
+                                    @if(Session::get('role') === 1)
                                     <a class="icon" href="{{$data->editItemUrl}}/{{$item->id_class}}"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                                    @endif
                                     @if(!$item->hasChildren)
                                     <a class="icon" href="{{$data->editItemUrl}}/{{$item->id_class}}/delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                     @endif
@@ -54,7 +56,7 @@
                                 </td>
                                 @break
                             @case('course')
-                                @if(Session::get('role') === 1)
+                                @if(Session::get('role') == 1)
                                     <td>{{$item->id_course}}</td><td>{{$item->name}}</td><td>{{$item->description}}</td><td>{{$item->date_start}}</td><td>{{$item->date_end}}</td>
                                         @if($item->active == 1)
                                             <td class="status-icon ok"><span class="icon"><i class="fa fa-check fa-sm" aria-hidden="true"></i></span></td>
@@ -67,17 +69,21 @@
                                         <a class="icon" href="{{$data->editItemUrl}}/{{$item->id_course}}/delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                         @endif
                                     </td>
-                                @elseif(Session::get('role') === 3)
+                                @elseif(Session::get('role') == 3)
                                     <td>{{$item->id_course}}</td><td>{{$item->name}}</td><td>{{$item->description}}</td><td>{{$item->date_start}}</td><td>{{$item->date_end}}</td>
-                                    <td>
                                         @if($item->status == 1)
-                                            <td class="status-icon ok"><span class="icon"><i class="fa fa-check fa-sm" aria-hidden="true"></i></span></td>
+                                            @if($item->active != 1)
+                                                <td class="status-icon sok" title="Estás matriculado en este curso, pero el profesor lo ha deshabilitado"><span class="icon"><i class="fa fa-check fa-sm" aria-hidden="true"></i></span></td>
+                                            @else
+                                                <td class="status-icon ok" title="Estás matriculado en este curso"><span class="icon"><i class="fa fa-check fa-sm" aria-hidden="true"></i></span></td>
+                                            @endif
                                         @else
-                                            <td class="status-icon nok"><span class="icon"><i class="fa fa-check fa-sm" aria-hidden="true"></i></span></td>
+                                            <td class="status-icon nok" title="No estás matriculado en este curso"><span class="icon"><i class="fa fa-check fa-sm" aria-hidden="true"></i></span></td>
                                         @endif
-                                    </td>
                                     <td>
-                                        <a class="icon" href="{{$data->editItemUrl}}/{{$item->id_course}}/enroll"><i class="fa fa-sign-in" aria-hidden="true"></i></a>
+                                        @if($item->active == 1 || $item->status == 1)
+                                            <a class="icon" href="{{$data->editItemUrl}}/{{$item->id_course}}/enrollment"><i class="fa fa-sign-in" aria-hidden="true"></i></a>
+                                        @endif
                                     </td>
                                 @endif
                                 @break

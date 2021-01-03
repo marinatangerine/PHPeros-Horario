@@ -14,7 +14,6 @@ use App\Models\UsersAdmin;
 class UserController extends Controller
 {
     public function login(Request $request) {
-        //dd($request->all());
         $email = $request->email;
         $pass = $request->pass;
 

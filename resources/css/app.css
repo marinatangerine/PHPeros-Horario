@@ -355,6 +355,10 @@ table.data-table td.status-icon.nok {
     color: #b10000;
 }
 
+table.data-table td.status-icon.sok {
+    color: #e0bd00;
+}
+
 div.calendar-header {
     width: 100%;
     text-align: center;

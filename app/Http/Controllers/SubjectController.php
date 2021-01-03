@@ -21,13 +21,22 @@ use App\Http\DTOs\SelectResultDTO;
 class SubjectController extends Controller 
 {
     public function getSubjects(){
+        $role = Session::get('role');
+        $user = Session::get('user');
+
         $data = new ListResultDTO;
         $data->itemType = "subject";
         $data->listName = "Clases";
         $data->editItemUrl = "subjects";
         $data->newItemText = "Crear clase";
 
-        $items = Subject::with('teacher', 'course')->get();
+        if($role == 1) {
+            $items = Subject::with('teacher', 'course')->get();
+        } else {
+            $id_teacher = $user->id_teacher;
+            $items = Subject::with('teacher', 'course')->where('id_teacher', $id_teacher)->get();
+        }
+
         foreach ($items as $item) {
             $teacher = $item->teacher;
             $course = $item->course;

@@ -145,7 +145,7 @@ class TeacherController extends Controller
             $user->nif = $nif;
             $user->surname = $surname;
             $user->telephone = $telephone;
-            $user->pass = '123';
+            $user->pass = password_hash('123', PASSWORD_DEFAULT);
 
             try {
                 //guardamos el modelo

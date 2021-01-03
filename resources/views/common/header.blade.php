@@ -24,8 +24,8 @@
                 <li><a href="calendar.php">Calendario</a></li>
                 @if(Session::get('role') === 1)
                 <li><a href="{{url('/teachers')}}">Profesores</a></li>
-                @endif
                 <li><a href="{{url('/courses')}}">Cursos</a></li>
+                @endif
                 @if(Session::get('role') < 3)
                 <li><a href="{{url('/subjects')}}">Clases</a></li>
                 @endif

@@ -17,6 +17,9 @@ use App\Http\DTOs\EditCourseResultDTO;
 class CourseController extends Controller 
 {
     public function getCourses(){
+        $role = Session::get('role');
+        $user = Session::get('user');
+
         $data = new ListResultDTO;
         $data->itemType = "course";
         $data->listName = "Cursos";
@@ -28,9 +31,18 @@ class CourseController extends Controller
             $result->id_course = $item->id_course;
             $result->name = $item->name;
             $result->description = $item->description;
-            $result->date_start = $item->date_start;
-            $result->date_end = $item->date_end;
+            $result->date_start = Carbon::parse($item->date_start)->format('d-m-Y');
+            $result->date_end = Carbon::parse($item->date_end)->format('d-m-Y');
             $result->active = $item->active;
+            
+            if($role == 3) {
+                $id_student = $user->id;
+                $enrollment = Enrollment::where(['id_student'=>$id_student, 'id_course'=>$item->id_course])->first();
+                if($enrollment) {
+                    $result->status = $enrollment->status;
+                }
+            }
+
             $result->hasChildren = (Subject::where('id_course', $item->id_course)->count()) + (Enrollment::where('id_course', $item->id_course)->count()) > 0;
             $data->items[] = $result;
         }
