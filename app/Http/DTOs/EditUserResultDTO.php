@@ -17,5 +17,8 @@ class EditUserResultDTO {
     public $errorNIF = '';
     public $serverError = '';
 
+    public $notif_exam;
+    public $notif_work;
+
     public $success = false;
 }

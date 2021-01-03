@@ -87,6 +87,19 @@
                             </div>
                         @endif
 
+                        @if(Session::get('role') == 3)
+                        <div class="wrap-input validate-input">
+                            <span>Notificaciones cuando haya nuevas notas de examenes</span>
+                            <input class="input-register" type="checkbox" name="notif_exam" @if($result->notif_exam) checked @endif value="1">
+                            <span class="focus-input"></span>
+                        </div>
+                        <div class="wrap-input validate-input">
+                        <span>Notificaciones cuando haya nuevas notas de trabajos</span>
+                            <input class="input-register" type="checkbox" name="notif_work" @if($result->notif_work) checked @endif value="1">
+                            <span class="focus-input"></span>
+                        </div>
+                        @endif
+
                         <div class="wrap-input validate-input">
                             <input class="input-register" type="password" name="pass" placeholder="Contraseña">
                             <span class="focus-input"></span>

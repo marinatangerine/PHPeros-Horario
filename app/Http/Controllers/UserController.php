@@ -10,6 +10,7 @@ use App\Http\DTOs\EditUserResultDTO;
 use App\Models\Student;
 use App\Models\Teacher;
 use App\Models\UsersAdmin;
+use App\Models\Notification;
 
 class UserController extends Controller
 {
@@ -65,6 +66,14 @@ class UserController extends Controller
             $result->telephone = $user->telephone;
         }
 
+        if($role == 3) {
+            $notificationConfig = Notification::where('id_student', $user->id)->first();
+            if($notificationConfig) {
+                $result->notif_exam = $notificationConfig->exam;
+                $result->notif_work = $notificationConfig->work;
+            }
+        }
+
         return view("editUser", ["result" => $result]);
     }
 
@@ -81,6 +90,20 @@ class UserController extends Controller
             $surname=$request->surname;
             $nif=$request->nif;
             $telephone=$request->telephone;
+        }
+
+        if($role==3) {
+            if($request->notif_exam) {
+                $notif_exam = 1;
+            } else {
+                $notif_exam = 0;
+            }
+
+            if($request->notif_work) {
+                $notif_work = 1;
+            } else {
+                $notif_work = 0;
+            }
         }
 
         $validationErrors = 0;
@@ -155,6 +178,11 @@ class UserController extends Controller
             $result->telephone = $telephone;
         }
 
+        if($role == 3) {
+            $result->notif_exam = $notif_exam;
+            $result->notif_work = $notif_work;
+        }
+
         if ($validationErrors == 0) {
             $user->username = $username;
             $user->name = $name;
@@ -177,6 +205,17 @@ class UserController extends Controller
             } catch (\Exception $ex) {
                 $result->serverError = $ex->getMessage();
                 $result->success = false;
+            }
+
+            if ($role == 3) {
+                Notification::where('id_student', $user->id)->delete();
+                $notification = new Notification;
+                $notification->id_student = $user->id;
+                $notification->exam = $notif_exam;
+                $notification->work = $notif_work;
+                $notification->continuous_assessment = 0;
+                $notification->final_note = 0;
+                $notification->save();
             }
         } else {
             $result->success = false;
