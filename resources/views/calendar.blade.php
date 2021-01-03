@@ -30,6 +30,20 @@
                                                 </div>
                                             @endif
                                         @endforeach
+                                        @foreach($data->exams as $exam)
+                                            @if($exam->date == $counter)
+                                                <div class="scheduleElement" style="background-color: #{{$exam->bg_color}}; color: {{$exam->text_color}}" title="{{$exam->course_name}} con {{$exam->teacher_name}}">
+                                                Examen {{$exam->name}} {{$exam->time}}
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                        @foreach($data->works as $work)
+                                            @if($work->date == $counter)
+                                                <div class="scheduleElement" style="background-color: #{{$work->bg_color}}; color: {{$work->text_color}}" title="{{$work->course_name}} con {{$work->teacher_name}}">
+                                                Trabajo {{$work->name}} {{$work->time}}
+                                                </div>
+                                            @endif
+                                        @endforeach
                                     </div>
                                 </td>
                             @else
