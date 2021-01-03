@@ -62,6 +62,7 @@
                     <tr>
                     <td>{{$item->date}}</td><td>{{$item->name}}</td><td>{{$item->course_name}}</td><td>{{$item->teacher_name}}</td><td>
                     <a class="icon" href="{{url('/exams')}}/{{$item->id_exam}}/delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                    <a class="icon" href="{{url('/exams')}}/{{$item->id_exam}}/marks"><i class="fa fa-institution" aria-hidden="true"></i></a>
                     </td>
                     </tr>
                 @endforeach

@@ -10,6 +10,7 @@ use App\Http\Controllers\EnrollmentController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\ExamController;
 use App\Http\Controllers\WorkController;
+use App\Http\Controllers\MarksController;
 use App\Http\DTOs\SignUpResultDTO;
 
 
@@ -65,3 +66,7 @@ Route::get('/exams/{id}/delete', [ExamController::class, 'deleteExam']);
 Route::get('/subjects/{id}/schedulework', [WorkController::class, 'getWorksData']);
 Route::post('/subjects/{id}/schedulework', [WorkController::class, 'saveWork']);
 Route::get('/works/{id}/delete', [WorkController::class, 'deleteWork']);
+Route::get('/exams/{id}/marks', [MarksController::class, 'getExamMarks']);
+Route::get('/works/{id}/marks', [MarksController::class, 'getWorkMarks']);
+Route::post('/exams/{id}/marks', [MarksController::class, 'saveExamMarks']);
+Route::post('/works/{id}/marks', [MarksController::class, 'saveWorkMarks']);
