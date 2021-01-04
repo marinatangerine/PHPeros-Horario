@@ -54,7 +54,7 @@
                 </div>
             </div>
             @if(count($result->items) > 0)
-                <div><span class="register-form-title"><p>Programación examenes</p> </span></div>
+                <div><span class="register-form-title"><p>Programación exámenes</p> </span></div>
                 <table class="data-table"><tr>
                 <th>Fecha</th><th>Nombre</th><th>Curso</th><th>Profesor</th><th>Acciones</th>
                 </tr>

@@ -18,7 +18,7 @@
                         <tr>
                             <td colspan="6">
                                 @if(count($subject->exams) > 0)
-                                <span class="sub-header">Examenes</span>
+                                <span class="sub-header">Exámenes</span>
                                 <table class="subdata-table">
                                     <tr>
                                         <th>Fecha</th><th>Nombre</th><th>Calificación</th>

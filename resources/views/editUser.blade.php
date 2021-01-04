@@ -89,7 +89,7 @@
 
                         @if(Session::get('role') == 3)
                         <div class="wrap-input validate-input">
-                            <span>Notificaciones cuando haya nuevas notas de examenes</span>
+                            <span>Notificaciones cuando haya nuevas notas de exámenes</span>
                             <input class="input-register" type="checkbox" name="notif_exam" @if($result->notif_exam) checked @endif value="1">
                             <span class="focus-input"></span>
                         </div>
